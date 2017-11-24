@@ -33,24 +33,20 @@ public class MainActivity extends AppCompatActivity {
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
-
-                String commands[] = new String[8];
+                //ffmpeg -r 1 -i data/input-%4d.png -c:v libx264 out.mp4
+                String commands[] = new String[6];
 
                 commands[0] =  "ffmpeg";
 
-                commands[1]  = "-i";
+                commands[1]  = "-r";
 
-                commands[2]  = filepath;
+                commands[2]  = "10";
 
-                commands[3]  = "-vcodec";
+                commands[3]  = "-i";
 
-                commands[4]  = "h264";
+                commands[4]  = "/storage/emulated/0/%d.png";
 
-                commands[5]  = "-acodec";
-
-                commands[6]  = "mp3";
-
-                commands[7]  = filepath2;
+                commands[5]  = filepath2;
 
                 new NDK().run_ffmpeg(commands);
 
