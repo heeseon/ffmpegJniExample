@@ -4872,7 +4872,7 @@ JNIEXPORT jint JNICALL Java_com_example_kakao_ffmpegjniexample_NDK_run_1ffmpeg
 
 
     int stringCount = (*env)->GetArrayLength(env, array);
-    const char* argv[6];
+    const char* argv[stringCount];
     for (int i=0; i<stringCount; i++) {
         jstring string = (jstring) (*env)->GetObjectArrayElement(env, array, i);
         argv[i] = (*env)->GetStringUTFChars(env, string, 0);
@@ -4881,7 +4881,7 @@ JNIEXPORT jint JNICALL Java_com_example_kakao_ffmpegjniexample_NDK_run_1ffmpeg
 
     __android_log_print(ANDROID_LOG_DEBUG, "........", "\n\n\n\n\n\n\n\n\n\n\n\n  before run_ffmpeg api called ------ \n\n\n\n\n\n\n\n\n\n\n");
 
-    run_ffmpeg(6, &argv);
+    run_ffmpeg(stringCount, &argv);
 
     __android_log_print(ANDROID_LOG_DEBUG, "........", "\n\n\n\n\n\n\n\n\n\n\n\n  after run_ffmpeg api called ------ \n\n\n\n\n\n\n\n\n\n\n");
 
