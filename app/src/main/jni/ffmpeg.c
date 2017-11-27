@@ -4808,6 +4808,7 @@ int run_ffmpeg(int argc, char **argv)
     __android_log_print(ANDROID_LOG_DEBUG, "........", "\n\n\n\n\n\n\n\n\n\n\n\n  run_ffmpeg api called 12------ \n\n\n\n\n\n\n\n\n\n\n");
 
     show_banner(argc, argv, options);
+
     __android_log_print(ANDROID_LOG_DEBUG, "........", "\n\n\n\n\n\n\n\n\n\n\n\n  run_ffmpeg api called 13------ \n\n\n\n\n\n\n\n\n\n\n");
 
     /* parse options and open all input/output files */
@@ -4862,14 +4863,13 @@ int run_ffmpeg(int argc, char **argv)
         exit_program(69);
 
     __android_log_print(ANDROID_LOG_DEBUG, "........", "\n\n\n\n\n\n\n\n\n\n\n\n  run_ffmpeg api called 26------ \n\n\n\n\n\n\n\n\n\n\n");
-    exit_program(received_nb_signals ? 255 : main_return_code);
+    //exit_program(received_nb_signals ? 255 : main_return_code);
     __android_log_print(ANDROID_LOG_DEBUG, "........", "\n\n\n\n\n\n\n\n\n\n\n\n  run_ffmpeg api called 27------ \n\n\n\n\n\n\n\n\n\n\n");
     return main_return_code;
 }
 
 JNIEXPORT jint JNICALL Java_com_example_kakao_ffmpegjniexample_NDK_run_1ffmpeg
   (JNIEnv *env, jobject obj, jobjectArray array){
-
 
     int stringCount = (*env)->GetArrayLength(env, array);
     const char* argv[stringCount];
@@ -4879,11 +4879,10 @@ JNIEXPORT jint JNICALL Java_com_example_kakao_ffmpegjniexample_NDK_run_1ffmpeg
             // Don't forget to call `ReleaseStringUTFChars` when you're done.
     }
 
-    __android_log_print(ANDROID_LOG_DEBUG, "........", "\n\n\n\n\n\n\n\n\n\n\n\n  before run_ffmpeg api called ------ \n\n\n\n\n\n\n\n\n\n\n");
+    __android_log_print(ANDROID_LOG_DEBUG, "........", "\n\n\n\n\n\n\n\n\n\n\n\n  before run_ffmpeg api called ------ %d \n\n\n\n\n\n\n\n\n\n\n", stringCount);
 
     run_ffmpeg(stringCount, &argv);
 
     __android_log_print(ANDROID_LOG_DEBUG, "........", "\n\n\n\n\n\n\n\n\n\n\n\n  after run_ffmpeg api called ------ \n\n\n\n\n\n\n\n\n\n\n");
-
 
 }

@@ -28,27 +28,28 @@ public class MainActivity extends AppCompatActivity {
                 String filepath2 = "";
 
                 try {
-                    filepath = new File(Environment.getExternalStorageDirectory(), "example.mp4").getCanonicalPath();
-                    filepath2 = new File(Environment.getExternalStorageDirectory(), "example_changed.mp4").getCanonicalPath();
+                    filepath = new File("/sdcard", "example.mp4").getCanonicalPath();
+                    filepath2 = new File("/sdcard", "et1.mp4").getCanonicalPath();
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
-                //ffmpeg -r 1 -i data/input-%4d.png -c:v libx264 out.mp4
+
                 String commands[] = new String[6];
 
                 commands[0] =  "ffmpeg";
 
-                commands[1]  = "-r";
+                commands[1]  = "-i";
 
-                commands[2]  = "10";
+                commands[2]  = filepath;
 
-                commands[3]  = "-i";
+                commands[3]  = "-r";
 
-                commands[4]  = "/storage/emulated/0/%d.png";
+                commands[4]  = "24";
 
                 commands[5]  = filepath2;
 
                 new NDK().run_ffmpeg(commands);
+
 
             }
         });
